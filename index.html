@@ -1,368 +1,388 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>装机精灵 · 简约工具箱</title>
-    <!-- 使用柔和的现代风格，移除所有冗余样式，只保留干净舒适的外观 -->
-    <style>
-        /* 全局重置与字体 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>装机精灵 · 简约工具箱</title>
+<style>
+    :root {
+        --bg: #f5f7fb;
+        --card: #ffffff;
+        --border: #e6ebf2;
+        --text: #1e293b;
+        --text-light: #64748b;
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+        --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
 
-        body {
-            background: #f7f9fc;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.5;
-            color: #1e293b;
-            padding: 2rem 1.5rem;
-            display: flex;
-            justify-content: center;
-        }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .wrapper {
-            max-width: 1200px;
-            width: 100%;
-        }
+    body {
+        background:
+            radial-gradient(circle at 0% 0%, #e8f0fe 0%, transparent 42%),
+            radial-gradient(circle at 100% 100%, #eef2ff 0%, transparent 42%),
+            var(--bg);
+        background-attachment: fixed;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                     'PingFang SC', 'Microsoft YaHei', Roboto, sans-serif;
+        line-height: 1.55;
+        color: var(--text);
+        padding: 2.5rem 1.5rem 4rem;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+    }
 
-        /* 头部区域 */
-        .hero {
-            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-            border-radius: 2rem;
-            padding: 2rem 2rem 1.5rem 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 4px 8px rgba(0, 0, 0, 0.02);
-            margin-bottom: 2rem;
-            border: 1px solid #e9eef3;
-        }
+    .wrapper { max-width: 1160px; width: 100%; }
 
-        .hero h1 {
-            font-size: 2.25rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 1.75rem;
-            border-left: 6px solid #3b82f6;
-            padding-left: 1.2rem;
-        }
+    /* ========== 头部 ========== */
+    .hero {
+        background: var(--card);
+        border-radius: 28px;
+        padding: 2.5rem 2.5rem 2rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border);
+        margin-bottom: 2rem;
+    }
 
-        .hero h1 span {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #64748b;
-            margin-left: 8px;
-        }
+    .hero h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #0f172a;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1.75rem;
+        border-left: 6px solid var(--primary);
+        padding-left: 1.2rem;
+    }
+    .hero h1 span {
+        font-size: 1.35rem;
+        font-weight: 400;
+        color: var(--text-light);
+        margin-left: 6px;
+    }
 
-        /* 步骤引导区域 - 简约、清晰 */
-        .step-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            background: #ffffff;
-            border-radius: 1.5rem;
-            padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-            border: 1px solid #eef2f6;
-        }
+    /* ========== 步骤引导 ========== */
+    .step-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        background: #fafbfd;
+        border-radius: 20px;
+        padding: 1.5rem 1.75rem;
+        border: 1px solid #eef2f6;
+    }
 
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            flex: 1 1 300px;
-        }
+    .step-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        flex: 1 1 320px;
+    }
 
-        .step-num {
-            background: #3b82f6;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
+    .step-num {
+        background: var(--primary);
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+    }
 
-        .step-content {
-            font-size: 1rem;
-        }
+    .step-content { font-size: 1rem; min-width: 0; }
 
-        .step-content a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px dashed #93c5fd;
-            transition: border-color 0.2s;
-        }
+    .step-content a {
+        color: var(--primary-dark);
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 1px dashed #93c5fd;
+        transition: border-color 0.2s, color 0.2s;
+    }
+    .step-content a:hover {
+        border-bottom-color: var(--primary-dark);
+        color: #1d4ed8;
+    }
 
-        .step-content a:hover {
-            border-bottom-color: #2563eb;
-        }
+    .step-title { font-weight: 600; }
 
-        .step-content .note {
-            color: #475569;
-            font-size: 0.95rem;
-            margin-top: 0.25rem;
-        }
+    .step-content .note {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+    }
 
-        .preview-image {
-            margin-top: 0.75rem;
-            background: #f1f5f9;
-            border-radius: 12px;
-            padding: 0.5rem;
-            display: inline-block;
-        }
+    /* ========== 图片预览区（悬停放大 + 点击灯箱） ========== */
+    .preview-image {
+        margin-top: 1rem;
+        display: inline-block;
+        position: relative;
+        cursor: zoom-in;
+        border-radius: 16px;
+        z-index: 1;
+        max-width: 100%;
+    }
 
-        .preview-image img {
-            max-width: 100%;
-            height: auto;
-            max-height: 80px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            display: block;
-        }
+    .preview-image img {
+        display: block;
+        max-width: 100%;
+        max-height: 160px;
+        width: auto;
+        height: auto;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+        background: #f8fafc;
+        transform-origin: center center;
+        transition:
+            transform 0.45s cubic-bezier(0.34, 1.3, 0.64, 1),
+            box-shadow 0.35s ease,
+            border-color 0.35s ease;
+        will-change: transform;
+    }
 
-        /* 主工具网格 */
-        .tools-section {
-            margin-bottom: 2.5rem;
+    /* 只在支持鼠标悬停的设备上启用放大效果 */
+    @media (hover: hover) and (pointer: fine) {
+        .preview-image:hover { z-index: 100; }
+        .preview-image:hover img {
+            transform: scale(1.55);
+            box-shadow: 0 24px 48px -12px rgba(15, 23, 42, 0.28);
+            border-color: #bfdbfe;
         }
+    }
 
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            letter-spacing: -0.01em;
-        }
+    /* 图片缺失时的占位提示 */
+    .img-placeholder {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #f1f5f9;
+        border: 1px dashed #cbd5e1;
+        border-radius: 14px;
+        padding: 0.85rem 1.35rem;
+        color: var(--text-light);
+        font-size: 0.875rem;
+    }
 
-        .section-title i {
-            font-style: normal;
-            font-size: 1.5rem;
-        }
+    /* ========== 工具网格 ========== */
+    .tools-section { margin-bottom: 2.25rem; }
 
+    .section-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1.1rem;
+        color: #0f172a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        letter-spacing: -0.01em;
+    }
+    .section-title i { font-style: normal; font-size: 1.4rem; }
+
+    .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .tool-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 0.9rem 1rem;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 0.925rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.2s ease;
+        box-shadow: var(--shadow-sm);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .tool-card:hover {
+        background: #f8fafc;
+        border-color: #b9d3f0;
+        box-shadow: 0 8px 18px rgba(37, 99, 235, 0.08);
+        transform: translateY(-2px);
+        color: #1e4f8a;
+    }
+
+    .tool-card.long-text {
+        white-space: normal;
+        word-break: break-word;
+        line-height: 1.3;
+        padding: 0.9rem 0.6rem;
+        font-size: 0.875rem;
+    }
+
+    /* ========== 品牌卡片 ========== */
+    .brand-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .brand-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.7rem 0.5rem;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 0.875rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.15s;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .brand-card:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+        color: #0f3b6a;
+        transform: translateY(-1px);
+    }
+
+    /* ========== 信息提示 ========== */
+    .info-block {
+        background: var(--card);
+        border-radius: 20px;
+        padding: 1.5rem 1.75rem;
+        border: 1px solid #eef2f6;
+        margin-top: 1.75rem;
+        color: #334155;
+        font-size: 0.925rem;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .info-block p {
+        margin-bottom: 0.6rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .info-block p:last-child { margin-bottom: 0; }
+    .info-block .bullet {
+        color: var(--primary);
+        font-weight: 700;
+        display: inline-block;
+        width: 20px;
+        flex-shrink: 0;
+    }
+
+    /* ========== 底部链接 ========== */
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        margin-top: 1.75rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+        font-size: 0.875rem;
+    }
+
+    .footer-links a {
+        color: var(--primary);
+        text-decoration: none;
+        border-bottom: 1px dotted #a5c9ff;
+        padding-bottom: 2px;
+        transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-links a:hover {
+        color: #1e4f8a;
+        border-bottom-color: #1e4f8a;
+    }
+
+    /* ========== 灯箱 ========== */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.88);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        cursor: zoom-out;
+        padding: 2rem;
+    }
+
+    .lightbox.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .lightbox img {
+        max-width: 90vw;
+        max-height: 88vh;
+        width: auto;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 32px 80px -16px rgba(0, 0, 0, 0.6);
+        background: #fff;
+        transform: scale(0.92);
+        transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+
+    .lightbox.active img {
+        transform: scale(1);
+    }
+
+    /* ========== 响应式 ========== */
+    @media (max-width: 600px) {
+        body { padding: 1.25rem 0.9rem 2.5rem; }
+        .hero { padding: 1.5rem 1.25rem 1.25rem; border-radius: 22px; }
+        .hero h1 { font-size: 1.65rem; padding-left: 0.9rem; flex-wrap: wrap; }
+        .hero h1 span { font-size: 1rem; margin-left: 0; }
+        .step-section { padding: 1.2rem; }
         .tool-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+            gap: 0.6rem;
         }
-
         .tool-card {
-            background: #ffffff;
-            border: 1px solid #e9eef3;
-            border-radius: 1rem;
-            padding: 0.9rem 1rem;
-            text-decoration: none;
-            color: #1e293b;
-            font-size: 0.95rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.2s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            word-break: keep-all;
-        }
-
-        .tool-card:hover {
-            background: #f8fafc;
-            border-color: #b9d3f0;
-            box-shadow: 0 6px 14px rgba(0, 82, 212, 0.06);
-            transform: translateY(-2px);
-            color: #1e4f8a;
-        }
-
-        /* 针对部分较长的名称，允许换行，但保持整洁 */
-        .tool-card.long-text {
+            font-size: 0.82rem;
+            padding: 0.7rem 0.5rem;
             white-space: normal;
             word-break: break-word;
-            line-height: 1.3;
-            padding: 0.9rem 0.6rem;
-            font-size: 0.9rem;
         }
-
-        /* 品牌 / 系统工具专用网格 (稍微不同风格) */
-        .brand-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 0.75rem;
-            margin-top: 0.5rem;
-        }
-
-        .brand-card {
-            background: #ffffff;
-            border: 1px solid #e9eef3;
-            border-radius: 2rem;
-            padding: 0.7rem 0.5rem;
-            text-decoration: none;
-            color: #1e293b;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.15s;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
-        }
-
-        .brand-card:hover {
-            background: #f1f5f9;
-            border-color: #cbd5e1;
-            color: #0f3b6a;
-            transform: translateY(-1px);
-        }
-
-        /* 分隔线 */
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #d9e2ef, #d9e2ef, #d9e2ef, transparent);
-            margin: 2rem 0 1.5rem 0;
-        }
-
-        /* 说明区域 */
-        .info-block {
-            background: #ffffff;
-            border-radius: 1.5rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid #eef2f6;
-            margin-top: 1.8rem;
-            color: #334155;
-            font-size: 0.95rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-        }
-
-        .info-block p {
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        .info-block p:last-child {
-            margin-bottom: 0;
-        }
-
-        .info-block .bullet {
-            color: #3b82f6;
-            font-weight: 700;
-            display: inline-block;
-            width: 20px;
-            flex-shrink: 0;
-        }
-
-        /* 底部小型链接区域 */
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem 1.5rem;
-            margin-top: 1.5rem;
-            padding-top: 0.5rem;
-            border-top: 1px solid #e2e8f0;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a {
-            color: #3b82f6;
-            text-decoration: none;
-            border-bottom: 1px dotted #a5c9ff;
-            padding-bottom: 2px;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: #1e4f8a;
-            border-bottom-color: #1e4f8a;
-        }
-
-        /* 响应式调整 */
-        @media (max-width: 600px) {
-            body {
-                padding: 1rem 0.75rem;
-            }
-
-            .hero {
-                padding: 1.5rem 1.2rem;
-            }
-
-            .hero h1 {
-                font-size: 1.7rem;
-                flex-wrap: wrap;
-                padding-left: 0.9rem;
-            }
-
-            .hero h1 span {
-                font-size: 1.1rem;
-                margin-left: 0;
-            }
-
-            .step-section {
-                padding: 1.2rem;
-            }
-
-            .tool-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 0.6rem;
-            }
-
-            .tool-card {
-                font-size: 0.85rem;
-                padding: 0.75rem 0.5rem;
-                white-space: normal;
-                word-break: break-word;
-            }
-
-            .brand-grid {
-                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            }
-
-            .info-block {
-                padding: 1.2rem 1.2rem;
-            }
-        }
-
-        /* 图片占位提醒（如果没有todesk.JPG, 显示一个占位提示） */
-        .img-placeholder {
-            background: #eef2f6;
-            border-radius: 8px;
-            padding: 0.6rem 1rem;
-            color: #64748b;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border: 1px dashed #b9c9da;
-        }
-
-        .img-placeholder::before {
-            content: "🖼️";
-            font-size: 1rem;
-        }
-    </style>
+        .brand-grid { grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); }
+        .info-block { padding: 1.2rem; }
+        .lightbox { padding: 1rem; }
+        .lightbox img { max-width: 94vw; max-height: 82vh; border-radius: 12px; }
+    }
+</style>
 </head>
 <body>
     <div class="wrapper">
-        <!-- 头部区域 -->
+
+        <!-- ===== 头部 + 步骤 ===== -->
         <div class="hero">
             <h1>装机精灵 <span>· 简约工具站</span></h1>
-            
-            <!-- 第一步和第二步引导 (保留核心引导流程) -->
+
             <div class="step-section">
                 <div class="step-item">
                     <div class="step-num">1</div>
@@ -371,22 +391,23 @@
                         <div class="note">下载 → 运行 → 拍照发送给客服</div>
                     </div>
                 </div>
+
                 <div class="step-item">
                     <div class="step-num">2</div>
                     <div class="step-content">
-                        <span style="font-weight:500;">运行远程协助并拍照发送客服</span>
+                        <span class="step-title">运行远程协助并拍照发送客服</span>
                         <div class="note">参考下图拍照给客服即可</div>
-                        <!-- 因为原图todesk.JPG可能不存在，做一个友好的图片占位或真实显示（若图存在则显示） -->
-                        <div class="preview-image">
-                            <!-- 如果todesk.JPG存在，img会加载，否则显示alt文字。保留原引用但加上备用提示 -->
-                            <img src="todesk.JPG" alt="ToDesk 拍照示例" onerror="this.style.display='none'; this.parentNode.innerHTML='<span class=\'img-placeholder\'>示例截图 (todesk.JPG)</span>';">
+
+                        <!-- 悬停放大 + 点击灯箱 -->
+                        <div class="preview-image" id="previewArea" title="点击查看大图">
+                            <img src="todesk.JPG" alt="ToDesk 拍照示例" id="previewImg">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 常用工具区域（核心工具集合） -->
+        <!-- ===== 常用工具 ===== -->
         <div class="tools-section">
             <div class="section-title"><i>🧰</i> 常用工具</div>
             <div class="tool-grid">
@@ -423,7 +444,7 @@
             </div>
         </div>
 
-        <!-- 品牌驱动 / 系统相关 (第二组，使用更柔和样式) -->
+        <!-- ===== 品牌与系统工具 ===== -->
         <div class="tools-section">
             <div class="section-title"><i>🔧</i> 品牌与系统工具</div>
             <div class="brand-grid">
@@ -442,7 +463,7 @@
             </div>
         </div>
 
-        <!-- 说明/注意事项 (保留了原有的5条提示，但更清晰简洁) -->
+        <!-- ===== 说明 ===== -->
         <div class="info-block">
             <p><span class="bullet">1.</span> 当你看到此页面时，说明我们的合作正式开始了。</p>
             <p><span class="bullet">2.</span> 请先完成第一步操作（下载运行 ToDesk 并拍照发给客服）。</p>
@@ -451,15 +472,68 @@
             <p><span class="bullet">5.</span> 本次合作结束后立即拿出手机拍照留念，并晒图好评！(保留证据可免费领取下一次服务)</p>
         </div>
 
-        <!-- 可选的额外小链接（原页面底部还有几个零散链接，整合到这里保持整洁） -->
+        <!-- ===== 底部链接 ===== -->
         <div class="footer-links">
             <a href="NVIDIA.html">显卡优化</a>
             <a href="https://windows.onekeyelf.com/10.zip">桌面美化</a>
             <a href="10换7bios解锁教程.doc">10换7 BIOS解锁教程</a>
             <a href="https://www.omnigroup.com/more">OmniDiskSweeper</a>
         </div>
+
     </div>
 
-    <!-- 原页面中的部分链接已在网格中体现，此处不重复。所有关键功能均已保留 -->
+    <!-- ===== 灯箱 ===== -->
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="大图预览" id="lightboxImg">
+    </div>
+
+    <script>
+        (function () {
+            var previewArea = document.getElementById('previewArea');
+            var previewImg  = document.getElementById('previewImg');
+            var lightbox    = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightboxImg');
+            var imgReady    = false;
+
+            /* 检查图片是否真的加载成功 */
+            function checkImg() {
+                if (previewImg && previewImg.complete && previewImg.naturalWidth > 0) {
+                    imgReady = true;
+                }
+            }
+            checkImg();
+
+            previewImg.addEventListener('load', function () { imgReady = true; });
+
+            previewImg.addEventListener('error', function () {
+                imgReady = false;
+                previewArea.style.cursor = 'default';
+                previewArea.removeAttribute('title');
+                previewArea.innerHTML =
+                    '<span class="img-placeholder">🖼️ 示例截图 (todesk.JPG 未找到)</span>';
+            });
+
+            /* 打开灯箱 */
+            function openLightbox() {
+                if (!imgReady) return;
+                lightboxImg.src = previewImg.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            /* 关闭灯箱 */
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            previewArea.addEventListener('click', openLightbox);
+            lightbox.addEventListener('click', closeLightbox);
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+        })();
+    </script>
 </body>
 </html>
